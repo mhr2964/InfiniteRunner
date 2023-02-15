@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 
 # Declare member variables here. Examples:
@@ -22,9 +22,13 @@ func _process(delta):
 		velocity.x -= 1
 	velocity.x *= 200
 	if (Input.is_action_just_pressed("move_up")):
-		velocity.y = -400
-	velocity.y += 10;
-	self.position += velocity * delta
+		velocity.y = -150
+	if (is_on_floor()): 
+		velocity.y = 0
+	#self.position += velocity * delta
+	move_and_slide(velocity + Vector2(0, 100), Vector2(0, 1))
+
+	#move_
 	pass
 
 func _on_Area2D_body_entered(body):
