@@ -6,6 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 var speed = 5;
 var velocity = Vector2.ZERO
+#var wasOnGround = 
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,12 +22,23 @@ func _process(delta):
 	if (Input.is_action_pressed("move_left")):
 		velocity.x -= 1
 	velocity.x *= 200
+	if (velocity.x < 0):
+		$AnimatedSprite.set_flip_h(true)
+	elif (velocity.x > 0):
+		 $AnimatedSprite.set_flip_h(false)
 	if (is_on_floor()): 
-		print("Floored")
+		if (abs(velocity.x) > 60):
+			$AnimatedSprite.play("runWithGun")
+		else:
+			$AnimatedSprite.play("idle")
+		print("Floored Bruh Ther")
 		velocity.y = 0
 	else:
 		velocity += Vector2(0, 8)
-	if (Input.is_action_just_pressed("move_up")):
+		print("Airr")
+		$AnimatedSprite.play("jump")
+
+	if (is_on_floor() && Input.is_action_just_pressed("move_up")):
 		velocity.y = -200
 	#self.position += velocity * delta
 	velocity.y = clamp(velocity.y, -300, 500)
