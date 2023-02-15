@@ -21,15 +21,16 @@ func _process(delta):
 	if (Input.is_action_pressed("move_left")):
 		velocity.x -= 1
 	velocity.x *= 200
-	velocity += Vector2(0, 10)
-	velocity.y = clamp(velocity.y, -300, 300)
+	if (is_on_floor()): 
+		print("Floored")
+		velocity.y = 0
+	else:
+		velocity += Vector2(0, 8)
 	if (Input.is_action_just_pressed("move_up")):
-		velocity.y = -350
-	#if (is_on_floor()): 
-		#velocity.y = 0
+		velocity.y = -200
 	#self.position += velocity * delta
-	move_and_slide(velocity, Vector2(0, 1))
-
+	velocity.y = clamp(velocity.y, -300, 500)
+	move_and_slide(velocity, Vector2(0, -1))
 	#move_
 	pass
 
