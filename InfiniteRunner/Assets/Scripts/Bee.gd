@@ -4,15 +4,12 @@ extends Node2D
 onready var animatedSprite = $Area2D/AnimatedSprite;
 onready var collisionShape = $Area2D/CollisionShape2D;
 
-var moveDirection = 1;
-var moveSpeed = 10;
+var moveDirection = -1;
+var moveSpeed = 1;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if (get_parent().get_node("AnimatedSprite") != null):
-		#print(get_parent().get_node("AnimatedSprite"))
-		moveDirection = get_parent().get_node("AnimatedSprite").flip_h;
-		pass;
+	animatedSprite.play();
 	if (moveDirection == 1):
 		animatedSprite.flip_h = 0;
 		pass

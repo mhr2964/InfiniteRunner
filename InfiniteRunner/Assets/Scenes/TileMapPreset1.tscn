@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Assets/TileSets/TileMap.tres" type="TileSet" id=1]
+[ext_resource path="res://Assets/Scripts/TileMap.gd" type="Script" id=2]
 
 [node name="TileMap" type="TileMap"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 3, 4, 0, 3, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 3, 65540, 0, 3, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 3, 131076, 0, 3, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 3, 196612, 0, 3, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 3, 262148, 0, 3, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 3, 327684, 0, 3, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 3, 393220, 0, 3 )
+script = ExtResource( 2 )
